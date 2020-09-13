@@ -26,15 +26,16 @@ try:
 except FileNotFoundError:
     while True:
         path = input("Enter your league client path: ")
-        path.replace("\"", "")
+        path = path.replace('"', '')
         if os.path.exists(path) and os.path.isfile(path) and os.path.split(path)[1] == "LeagueClient.exe":
             break
         else:
             print("Invalid path")
 
 while True:
-    language = input("Enter the language you want to change the launcher to: \nAvailable options are:\nEnglishUS\nEnglishUK\nEnglishAU\nSpanishES\nSpanishMX\nFrench\nGerman\nJapanese\nKorean\nItalian\nLAnguage: ")
-    if language.replace(" ","").lower() in languageDict:
+    language = input("Enter the language you want to change the launcher to: \nAvailable options are:\nEnglishUS\nEnglishUK\nEnglishAU\nSpanishES\nSpanishMX\nFrench\nGerman\nJapanese\nKorean\nItalian\nLanguage: ")
+    language = language.replace(" ","").lower()
+    if language in languageDict:
         language = languageDict[language]
         break
     else:
